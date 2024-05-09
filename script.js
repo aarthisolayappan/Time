@@ -68,11 +68,11 @@ class Ball {
       // Adjust diagonal movement when dropping
       if (abs(this.originalY - this.y) > 5) {
         // If the ball has moved significantly from its original position
-        this.x = lerp(this.x, x, 0.05); // Slow down horizontal movement
+        this.x = lerp(this.x, x, 0.1); // Slow down horizontal movement
       } else {
-        this.x = lerp(this.x, x, 0.1); // Continue regular horizontal movement
+        this.x = lerp(this.x, x, 0.2); // Continue regular horizontal movement
       }
-      this.y = lerp(this.y, y, 0.1); // Continue regular vertical movement
+      this.y = lerp(this.y, y, 0.2); // Continue regular vertical movement
     }
     // Ensure that the squares reach the bottom of the page
     if (this.drop && this.y >= height - this.size) {
@@ -445,93 +445,57 @@ function getCurrentTime() {
 }
 
 
-let fastForwardButton = document.getElementById("fast-forward-btn");
+
+// let fastForwardButton = document.getElementById("fast-forward-btn");
+
+// // Define variables to keep track of the current hour and minute
+// let curHour = 0;
+// let curMinute = 0;
+
+// // Initialize current hour and minute with the current time
+// let currentTime = new Date();
+// curHour = currentTime.getHours();
+// curMinute = currentTime.getMinutes();
+
+// // Increment the minute by 1 when the fast forward button is clicked
+// fastForwardButton.addEventListener("click", () => {
+//   curMinute += 1;
+
+//   // Check if the minute has reached 60
+//   if (curMinute > 59) {
+//     curMinute = 0; // Reset minute to 0
+//     curHour += 1; // Increment hour by 1
+
+//     // Check if the hour has reached 24
+//     if (curHour === 24) {
+//       curHour = 0; // Reset hour to 0
+//     }
+//   }
+
+//   // Update the displayed time
+//   updateDisplayedTime();
+// });
+
+// let onesMinuteIndex = 0; // Initialize the index for the ones digit
+// let tensMinuteIndex = 0; // Initialize the index for the tens digit
+
+// function updateDisplayedTime() {
+//   // Update the positions of the ones and tens digits based on the current time
+//   let currentTime = getCurrentTime();
+//   let onesMinute = currentTime[4]; // Get the ones digit of the minutes
+//   let tensMinute = currentTime[3]; // Get the tens digit of the minutes
+
+//   digitPositions[onesMinute] = digitPositions[(onesMinute + onesMinuteIndex) % 10].map(pos => ({ x: pos.x, y: pos.y }));
+//   digitPositions[tensMinute] = digitPositions[(tensMinute + tensMinuteIndex) % 6].map(pos => ({ x: pos.x, y: pos.y }));
+// }
+
+// function getCurrentTime() {
+//   return [Math.floor(curHour / 10), curHour % 10, -1, Math.floor(curMinute / 10), curMinute % 10]; // Use -1 to represent the colon
+// }
 
 
-function mousePressed() {
-  // Increment the minute by 1
-  if (fastForwardButton.clicked) {
-  
-  curMinute += 1;
-
-  // Check if the minute has reached 60
-  if (curMinute > 59) {
-    curMinute = 0; // Reset minute to 0
-    curHour += 1; // Increment hour by 1
-  }
-
-  // Check if the hour has reached 24
-  if (curHour === 24) {
-    curHour = 0; // Reset hour to 0
-  }
-
-  // Update the displayed time
-  updateDisplayedTime();
-}
-}
-
-fastForwardButton.addEventListener("click", () => {
-  // Set a flag indicating that the button is clicked
-  fastForwardButton.clicked = true;
-});
-
-// Reset the flag when the mouse is released
-document.addEventListener("mouseup", () => {
-  fastForwardButton.clicked = false;
-});
-
-let onesMinuteIndex = 0; // Initialize the index for the ones digit
-let tensMinuteIndex = 0; // Initialize the index for the tens digit
-
-function updateDisplayedTime() {
-  // Calculate the current time
-  let currentTime = getCurrentTime();
-  let onesMinute = currentTime[4]; // Get the ones digit of the minutes
-  let tensMinute = currentTime[3]; // Get the tens digit of the minutes
-  
-  // Increment the index for the ones digit
-  onesMinuteIndex++;
-
-  // Check if the ones digit index reaches 10
-  if (onesMinuteIndex === 10) {
-    // Reset the ones digit index
-    onesMinuteIndex = 0;
-
-    // Increment the tens digit when the ones digit hits 9
-    if (onesMinute === 0) {
-      // Increment the index for the tens digit
-      tensMinuteIndex++;
-
-      // Reset the tens digit index if it reaches 6
-      if (tensMinuteIndex === 6) {
-        tensMinuteIndex = 0;
-
-        // Increment the hour by 1 when the tens digit of the minutes reaches 6
-        curHour++;
-
-        // Reset the hour to 0 if it reaches 24
-        if (curHour === 24) {
-          curHour = 0;
-        }
-      }
-
-      // Calculate the next tens digit based on the index
-      let nextTensMinute = (tensMinute + tensMinuteIndex) % 6; // Calculate the next tens digit (cycling from 5 to 0)
-
-      // Update the positions of the tens digit to match the position of the next digit
-      digitPositions[tensMinute] = digitPositions[nextTensMinute].map(pos => ({ x: pos.x, y: pos.y }));
-    }
-  }
-
-  // Calculate the next ones digit based on the index
-  let nextOnesMinute = (onesMinute + onesMinuteIndex) % 10; // Calculate the next ones digit (cycling from 9 to 0)
-
-  // Update the positions of the ones digit to match the position of the next digit
-  digitPositions[onesMinute] = digitPositions[nextOnesMinute].map(pos => ({ x: pos.x, y: pos.y }));
-}
-
-
-document.getElementById("fast-forward-btn").addEventListener("click", function() {
+// Function to generate and append a rectangle
+function generateRectangle() {
   // Define the canvas area
   var canvasWidth = document.getElementById("sketch-holder").offsetWidth;
   var canvasHeight = document.getElementById("sketch-holder").offsetHeight;
@@ -589,8 +553,20 @@ document.getElementById("fast-forward-btn").addEventListener("click", function()
 
   // Append the rectangle to the canvas
   document.getElementById("sketch-holder").appendChild(rect);
-})
+}
 
+// Event listener for the fast forward button click
+document.getElementById("fast-forward-btn").addEventListener("click", function() {
+  // Remove existing rectangles
+  var rectangles = document.querySelectorAll('.rect');
+  rectangles.forEach(function(rect) {
+    rect.remove();
+  });
+  // Generate new rectangle
+  generateRectangle();
+});
+
+// Event listener for window resize
 window.addEventListener("resize", function() {
   // Remove existing rectangles
   var rectangles = document.querySelectorAll('.rect');
@@ -600,6 +576,7 @@ window.addEventListener("resize", function() {
   // Generate new rectangle
   generateRectangle();
 });
+
 
 
 
