@@ -6,3 +6,156 @@
     overflow: hidden; 
 }
 
+body{
+    background-color:antiquewhite;
+}
+
+#sketch-holder{
+    width: 80vw;
+    height: 90vh;
+    margin: auto;
+    margin-top: 5vh;
+    padding-left: 16vw;
+    border-radius: 2%;
+    padding-top: 7vh;
+}
+
+#sketch-holder canvas{
+    height:86%!important;
+    width: auto!important;
+    border-radius: 3%;
+    background: antiquewhite;
+}
+
+#fast-forward-btn {
+    position: absolute;
+    top: 87vh;
+    font-family: 'Lucida Sans Unicode', sans-serif;
+    left: 44vw;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
+    background-color: antiquewhite; /* Blue color for the button */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: max-content;
+    transition: background-color 0.3s;
+  }
+  
+  #fast-forward-btn:hover {
+    background-color: rgb(73, 71, 67); /* Darker blue color on hover */
+    color: antiquewhite;
+  }
+
+
+  @media screen and (max-width: 1503px) and (min-width: 1026px) {
+    #sketch-holder {
+      width: 90vw;
+      height: 90vh;
+      border-radius: 3%;
+      padding-left: 5vw;
+      padding-top: 10vh;
+    }
+  
+    #sketch-holder canvas {
+      height: 90%!important;
+      width: 80%!important;
+      margin-top: -70px;
+      margin-left: 110px;
+    }
+  
+    #fast-forward-btn {
+      top: 87vh;
+      left: 43vw;
+      font-size: 15px;
+    }
+  }
+
+
+  @media screen and (max-width: 1025px) {
+    #sketch-holder {
+      width: 90vw;
+      height: 90vh;
+      border-radius: 2%;
+      padding-left: 5vw;
+      padding-top: 10vh;
+    }
+  
+    #sketch-holder canvas {
+      height: 75%!important;
+      width: 95%!important;
+      margin-top: -70px;
+    }
+  
+    #fast-forward-btn {
+      top: 87vh;
+      left: 40vw;
+      font-size: 15px;
+    }
+  }
+
+
+  @media screen and (max-width: 900px) {
+    #sketch-holder {
+      width: 90vw;
+      height: 90vh;
+      border-radius: 2%;
+      padding-left: 5vw;
+      padding-top: 10vh;
+    }
+  
+    #sketch-holder canvas {
+      height: 61%!important;
+      width: 95%!important;
+      margin-top: -70px;
+    }
+}
+
+
+
+@media screen and (max-width: 700px) {
+    #sketch-holder {
+      width: 90vw;
+      height: 90vh;
+      border-radius: 2%;
+      padding-left: 5vw;
+      padding-top: 10vh;
+    }
+  
+    #sketch-holder canvas {
+      height: 50%!important;
+      width: 95%!important;
+      margin-top: -70px;
+    }
+  
+    #fast-forward-btn {
+      top: 87vh;
+      left: 36vw;
+      font-size: 13px;
+    }
+  }
+
+
+  @media screen and (max-width: 431px) {
+    #sketch-holder {
+      width: 90vw;
+      height: 90vh;
+      border-radius: 0%;
+      padding-left: 5vw;
+      padding-top: 10vh;
+    }
+  
+    #sketch-holder canvas {
+      height: 30%!important;
+      width: 95%!important;
+      margin-top: -90px;
+    }
+  
+    #fast-forward-btn {
+      top: 87vh;
+      left: 34vw;
+      font-size: 13px;
+    }
+  }
