@@ -49,6 +49,25 @@ body{
     color: antiquewhite;
   }
 
+  .rect {
+    position: absolute;
+    width: 270px;
+    height: 120px;
+    background-color: black;
+    text-align: center;
+    border-style: dashed;
+    border-width: 2px;
+    border-color: antiquewhite;
+    font-family: Helvetica, sans-serif, sans-serif;
+    font-size: 16px;
+    rotate: -1deg;
+    line-height: 17px;
+    padding: 21px;
+    color: white;
+    align-content: center;
+}
+
+
 
   @media screen and (max-width: 1503px) and (min-width: 1026px) {
     #sketch-holder {
@@ -135,10 +154,34 @@ body{
       left: 36vw;
       font-size: 13px;
     }
+
+    .rect {
+      position: absolute;
+      width: 190px;
+      height: 90px;
+      background-color: black;
+      text-align: center;
+      border-style: dashed;
+      border-width: 1.7px;
+      border-color: antiquewhite;
+      font-family: Helvetica, sans-serif, sans-serif;
+      font-size: 14px;
+      rotate: -1deg;
+      line-height: 14px;
+      padding: 15px;
+      color: white;
+      align-content: center;
+  }
+
   }
 
 
-  @media screen and (max-width: 431px) {
+  @media screen and (max-width: 430px) {
+   
+    body{
+      overflow: hidden;
+    }
+   
     #sketch-holder {
       width: 90vw;
       height: 90vh;
@@ -148,9 +191,9 @@ body{
     }
   
     #sketch-holder canvas {
-      height: 30%!important;
+      height: 40%!important;
       width: 95%!important;
-      margin-top: -90px;
+      margin-top: -70px;
     }
   
     #fast-forward-btn {
@@ -158,4 +201,23 @@ body{
       left: 34vw;
       font-size: 13px;
     }
+
+    .rect {
+      position: absolute;
+      width: 150px;
+      height: 80px;
+      background-color: black;
+      text-align: center;
+      border-style: dashed;
+      border-width: 2px;
+      border-color: antiquewhite;
+      font-family: Helvetica, sans-serif, sans-serif;
+      font-size: 12px;
+      rotate: -1deg;
+      line-height: 13px;
+      padding: 10px;
+      color: white;
+      align-content: center;
+  }
+  
   }

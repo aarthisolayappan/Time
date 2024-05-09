@@ -531,8 +531,75 @@ function updateDisplayedTime() {
 }
 
 
+document.getElementById("fast-forward-btn").addEventListener("click", function() {
+  // Define the canvas area
+  var canvasWidth = document.getElementById("sketch-holder").offsetWidth;
+  var canvasHeight = document.getElementById("sketch-holder").offsetHeight;
 
+  // Define the button dimensions and position
+  var buttonRect = document.getElementById("fast-forward-btn").getBoundingClientRect();
+  var buttonLeft = buttonRect.left;
+  var buttonTop = buttonRect.top;
+  var buttonWidth = buttonRect.width;
+  var buttonHeight = buttonRect.height;
 
+  // Generate random positions for rectangles within the canvas area but not over the button
+  var randomX, randomY;
+  do {
+    randomX = Math.floor(Math.random() * canvasWidth);
+    randomY = Math.floor(Math.random() * canvasHeight);
+  } while (
+    randomX >= buttonLeft && randomX <= buttonLeft + buttonWidth &&
+    randomY >= buttonTop && randomY <= buttonTop + buttonHeight
+  );
+
+  // Generate a random rotation between -3 to 3 degrees
+  var randomRotation = Math.random() * 6 - 3; 
+
+  // Array of different texts
+  var texts = [
+    "You cannot fast-forward time", 
+    "You cannot rewind time", 
+    "You cannot pause time", 
+    "You can only waste or benefit from time", 
+    "There are no short-cuts in life",
+    "Time flying can be scary sometimes",
+    "The time will never be right",
+    "Be in the present. Earn? the future",
+    "Everything takes it's time for a reason",
+    "Don't rush into anything. Wait for it to happen",
+    "Shortcuts are not the answer",
+    "Can we skip to next week? No you may not",
+    "Use your present time wisely",
+    "This is not a movie you can fastforward",
+    "Take it slow, you don't want motion sickness",
+    "Don't you have better things to do than waste time trying to fastforward time",
+    "WHY DO YOU WANT TO DO IT SO BAD",
+    "Is this really worth it?"
+  ];
+  var randomText = texts[Math.floor(Math.random() * texts.length)];
+  
+  // Create a new rectangle element
+  var rect = document.createElement("div");
+  rect.classList.add("rect");
+  rect.style.left = randomX + "px";
+  rect.style.top = randomY + "px";
+  rect.textContent = randomText;
+  rect.style.transform = "rotate(" + randomRotation + "deg)"; // Apply the random rotation
+
+  // Append the rectangle to the canvas
+  document.getElementById("sketch-holder").appendChild(rect);
+})
+
+window.addEventListener("resize", function() {
+  // Remove existing rectangles
+  var rectangles = document.querySelectorAll('.rect');
+  rectangles.forEach(function(rect) {
+    rect.remove();
+  });
+  // Generate new rectangle
+  generateRectangle();
+});
 
 
 
