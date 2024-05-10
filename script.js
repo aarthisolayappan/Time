@@ -277,7 +277,7 @@ let savedCurrentTime;
 
 function isDaytime() {
   let hour = new Date().getHours();
-  return hour >= 6 && hour < 21; // Assume daytime from 6 AM to 6 PM
+  return hour >= 6 && hour < 20; // Assume daytime from 6 AM to 6 PM
 }
 
 function setup() {
