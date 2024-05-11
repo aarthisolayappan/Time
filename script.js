@@ -6,7 +6,7 @@ class Ball {
     this.originalY = y;
     this.color = color;
     this.drop = drop;
-    this.size = 52; // Square size
+    this.size = 61; // Square size
     this.speed = random(8, 7);
     this.gravity = 0.5;
     this.hitGround = false;
